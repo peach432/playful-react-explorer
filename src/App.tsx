@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Index from "./pages/Index";
 import CategoryPage from "./pages/CategoryPage";
 import CartPage from './pages/CartPage';
+
 // Create a new QueryClient instance
 const queryClient = new QueryClient();
 
@@ -19,9 +20,9 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/category/:category" element={<CategoryPage />} />
-          <Route path="*" element={<Navigate to="/" replace />} />
+          <Route path="/category/*" element={<CategoryPage />} />
           <Route path="/cart" element={<CartPage />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
