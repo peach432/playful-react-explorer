@@ -29,6 +29,16 @@ const CategoryPage = () => {
     });
   }, [location.pathname]);
 
+  // Example of conditional rendering based on path
+  const isOutletSection = pathSegments[0] === 'outlet';
+  const isSurMesureSection = pathSegments[0] === 'sur-mesure';
+  const isAccessoriesSection = pathSegments[0] === 'accessoires';
+
+  // Example of getting specific category details
+  const mainCategory = pathSegments[0];
+  const subCategory = pathSegments[1];
+  const productType = pathSegments[2];
+
   return (
     <div className="min-h-screen flex flex-col relative">
       <TopNavbar />
@@ -61,6 +71,28 @@ const CategoryPage = () => {
               ))}
             </ul>
           </div>
+
+          {/* Example of conditional content based on category */}
+          {isOutletSection && (
+            <div className="bg-red-50 p-4 rounded-md mb-6">
+              <h2 className="text-red-600 font-bold mb-2">Special Outlet Offers!</h2>
+              <p className="text-red-700">Discover our exclusive outlet deals with up to 50% off!</p>
+            </div>
+          )}
+
+          {isSurMesureSection && (
+            <div className="bg-purple-50 p-4 rounded-md mb-6">
+              <h2 className="text-purple-600 font-bold mb-2">Sur Mesure Collection</h2>
+              <p className="text-purple-700">Explore our customizable pieces made just for you.</p>
+            </div>
+          )}
+
+          {isAccessoriesSection && (
+            <div className="bg-blue-50 p-4 rounded-md mb-6">
+              <h2 className="text-blue-600 font-bold mb-2">Accessories Collection</h2>
+              <p className="text-blue-700">Complete your look with our premium accessories.</p>
+            </div>
+          )}
         </div>
         <BrandNavbarSection />
         <div className="hidden lg:block">
