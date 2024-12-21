@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ProductCard from "./ProductCardSection";
+import ProductCard from "../ProductCard";
 
 const products = [
   { id: 1, name: "Suit", material: "WOOL", color: "Midnight Blue", price: 1295, image: "/Articles/1.png" },
@@ -19,7 +19,7 @@ const ProductsSection = () => {
 
   const totalPages = Math.ceil(products.length / itemsPerPage);
 
-  const handlePageChange = (pageNumber) => {
+  const handlePageChange = (pageNumber: number) => {
     setCurrentPage(pageNumber);
   };
 
@@ -31,14 +31,10 @@ const ProductsSection = () => {
   return (
     <div className="w-full bg-gray-50">
       <div className="container mx-auto px-4 py-8">
-        {/* Responsive grid: 2 columns on mobile, 3 on desktop */}
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
           {currentProducts.map((product) => (
-            <div className="w-full">
-              <ProductCard 
-                key={product.id} 
-                product={product} 
-              />
+            <div key={product.id} className="w-full">
+              <ProductCard product={product} />
             </div>
           ))}
         </div>
